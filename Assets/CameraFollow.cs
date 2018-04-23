@@ -23,6 +23,7 @@ public class CameraFollow : MonoBehaviour {
     BoxCollider myCol;
 
     bool dead = false;
+    bool done = false;
 
     public Transform walls;
 
@@ -59,7 +60,7 @@ public class CameraFollow : MonoBehaviour {
 	}
 
 	void Update() {
-		if (!dead) {
+		if (!dead && !done) {
 	        distCovered += Time.deltaTime * speed;
 	        float fracJourney = distCovered / journeyLength;
 	        transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Lerp(zPosStart, zPosEnd, fracJourney));
@@ -114,6 +115,7 @@ public class CameraFollow : MonoBehaviour {
 
 		} else if (other.gameObject.tag == "EndZone") {
 			successText.gameObject.SetActive(true);
+			done = true;
 		} else {
 			// 
 		}
