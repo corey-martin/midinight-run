@@ -74,7 +74,11 @@ public class CameraFollow : MonoBehaviour {
 	        transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, -limit, limit), transform.position.y, transform.position.z);
 
 			if (Input.GetKey("space")) {
-				speed = 160;
+				if (Input.GetKey("up")) {
+					speed = 500;
+				} else {
+					speed = 160;
+				}
 				multiplierText.gameObject.SetActive(true);
 			} else {
 				speed = 90;
