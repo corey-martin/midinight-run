@@ -75,9 +75,11 @@ public class CameraFollow : MonoBehaviour {
 
 			if (Input.GetKey("space")) {
 				if (Input.GetKey("up")) {
-					speed = 500;
+					speed = 300;
+					multiplierText.text = "4X Multiplier";
 				} else {
 					speed = 160;
+					multiplierText.text = "2X Multiplier";
 				}
 				multiplierText.gameObject.SetActive(true);
 			} else {
@@ -109,6 +111,8 @@ public class CameraFollow : MonoBehaviour {
 			audioSource.Play();
 			if (speed > 100) {
 				score += 20000;
+			} else if (speed > 200) {
+				score += 50000;
 			} else {
 				score += 10000;
 			}
